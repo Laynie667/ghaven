@@ -1,426 +1,490 @@
-# Gilderhaven World Systems
+# Gilderhaven Systems
+## Complete MUD Framework for Evennia
 
-A collection of standalone game systems for Evennia MUD framework. These systems operate independently of Character.py using `.db` attributes and tags, allowing you to build the world before building characters.
+A comprehensive system package for building an adult-themed MUD with Evennia, featuring rich gameplay systems, detailed world content, and sophisticated character mechanics.
 
-## Installation
+**Version:** 2.0  
+**Lines of Code:** ~40,000+  
+**Framework:** Evennia MUD Framework  
+**Python:** 3.10+
 
-```bash
-cd ~/Gilderhaven/gilderhaven
-unzip -o world_systems_v3.zip
+---
+
+## Quick Start
+
+```python
+# 1. Copy to your Evennia game directory
+cp -r gilderhaven_systems/* mygame/
+
+# 2. Add command sets to default_cmdsets.py
+from commands import (
+    HousingCmdSet, GatheringCmdSet, FurnitureCmdSet,
+    PositionCmdSet, NPCCmdSet, ItemCmdSet, ShopCmdSet,
+    BodyCmdSet, TimeCmdSet, QuestCmdSet, CraftingCmdSet,
+    CombatCmdSet, PartyCmdSet
+)
+
+class CharacterCmdSet(default_cmds.CharacterCmdSet):
+    def at_cmdset_creation(self):
+        super().at_cmdset_creation()
+        self.add(HousingCmdSet)
+        self.add(GatheringCmdSet)
+        self.add(FurnitureCmdSet)
+        self.add(PositionCmdSet)
+        self.add(NPCCmdSet)
+        self.add(ItemCmdSet)
+        self.add(ShopCmdSet)
+        self.add(BodyCmdSet)
+        self.add(TimeCmdSet)
+        self.add(QuestCmdSet)
+        self.add(CraftingCmdSet)
+        self.add(CombatCmdSet)
+        self.add(PartyCmdSet)
+
+# 3. Use mixins in your typeclasses (optional but recommended)
+from typeclasses.mixins import GilderhaveRoomMixin, GilderhaveCharacterMixin
+
+class Room(GilderhaveRoomMixin, DefaultRoom):
+    pass
+
+class Character(GilderhaveCharacterMixin, DefaultCharacter):
+    pass
+
+# 4. Build the world
+@py from content.the_grove import build_all; build_all()
+@py from content.builders import build_all_newbie_areas; build_all_newbie_areas()
 ```
+
+---
 
 ## Systems Overview
 
-| System | File | Purpose |
-|--------|------|---------|
-| Currency | `world/currency.py` | Gold/money management |
-| Effects | `world/effects.py` | Buffs, debuffs, curses, transformations |
-| Triggers | `world/triggers.py` | Event-driven actions (when X happens, do Y) |
-| Resources | `world/resources.py` | Gatherable nodes (fishing, foraging, mining) |
-| Random Events | `world/random_events.py` | Ambient flavor and world events |
-| Traps | `world/traps.py` | Hazards, curses, defensive creatures |
-| Scenes | `world/scenes.py` | Branching interactive narratives |
+### Core Systems (~15,500 lines)
+
+| System | File | Lines | Purpose |
+|--------|------|-------|---------|
+| Currency | `world/currency.py` | ~200 | Money management |
+| Effects | `world/effects.py` | ~400 | Statuses, transformations |
+| Triggers | `world/triggers.py` | ~350 | Event handling |
+| Resources | `world/resources.py` | ~400 | Gatherable nodes |
+| Random Events | `world/random_events.py` | ~350 | Ambient events |
+| Traps | `world/traps.py` | ~400 | Hazards and curses |
+| Scenes | `world/scenes.py` | ~500 | Branching narratives |
+| Scene Examples | `world/scenes_examples.py` | ~400 | 20 pre-built scenes |
+| Housing | `world/housing.py` | ~900 | Player homes |
+| Furniture | `world/furniture.py` | ~1,000 | Interactive furniture |
+| Positions | `world/positions.py` | ~1,000 | Character poses |
+| NPCs | `world/npcs.py` | ~1,800 | NPC framework |
+| Items | `world/items.py` | ~1,600 | Item system |
+| Shops | `world/shops.py` | ~750 | Buy/sell interface |
+| Body | `world/body.py` | ~1,450 | Body customization |
+| Time/Weather | `world/time_weather.py` | ~800 | Game time system |
+| Quests | `world/quests.py` | ~1,200 | Quest system |
+| Crafting | `world/crafting.py` | ~2,800 | 102 recipes, skills |
+
+### Combat Systems (~5,600 lines)
+
+| System | File | Lines | Purpose |
+|--------|------|-------|---------|
+| Combat | `world/combat.py` | ~1,800 | Combat engine |
+| Creatures | `world/creatures.py` | ~1,050 | 12 creature templates |
+| Parties | `world/parties.py` | ~700 | Party formation |
+| Encounters | `world/encounters.py` | ~870 | Random encounters |
+
+### Commands (~6,700 lines)
+
+| Commands | File | Lines |
+|----------|------|-------|
+| Housing | `commands/housing_commands.py` | ~650 |
+| Gathering | `commands/gathering_commands.py` | ~500 |
+| Furniture | `commands/furniture_commands.py` | ~450 |
+| Positions | `commands/position_commands.py` | ~550 |
+| NPCs | `commands/npc_commands.py` | ~400 |
+| Items | `commands/item_commands.py` | ~600 |
+| Shops | `commands/shop_commands.py` | ~400 |
+| Body | `commands/body_commands.py` | ~550 |
+| Time | `commands/time_commands.py` | ~450 |
+| Quests | `commands/quest_commands.py` | ~500 |
+| Crafting | `commands/crafting_commands.py` | ~500 |
+| Combat | `commands/combat_commands.py` | ~1,050 |
+| Party | `commands/party_commands.py` | ~700 |
+
+### Content (~8,500 lines)
+
+| Area | File | Rooms | Purpose |
+|------|------|-------|---------|
+| The Grove Hub | `content/the_grove.py` | 28 | Central hub |
+| Museum | `content/museum.py` | 8 | Curator's domain |
+| Market | `content/market.py` | 5 | Shopping district |
+| Whisperwood | `content/whisperwood.py` | 6 | Forest area |
+| Moonshallow | `content/moonshallow.py` | 4 | Pond/fishing |
+| Sunny Meadow | `content/sunny_meadow.py` | 4 | Flower fields |
+| Copper Hill | `content/copper_hill.py` | 6 | Mining area |
+| Tidepools | `content/tidepools.py` | 6 | Beach area |
+
+**Total: ~67 rooms across 8 areas**
 
 ---
 
-## Currency System
+## The Grove Hub
 
-Simple money tracking on any object.
+The central safe zone at the roots of Yggdrasil.
 
-```python
-from world.currency import balance, receive, pay, transfer, can_afford
+### Districts
 
-# Give gold
-receive(character, 100)  # "You receive 100 gold."
+| District | Rooms | Features |
+|----------|-------|----------|
+| **Gate Plaza** | 2 | 9 realm gates, Gatekeepers' Office |
+| **Town Square** | 2 | Central fountain, Wishing Well |
+| **Tavern Row** | 8 | Tipsy Sprite, Wanderer's Rest Inn, Bath House, Lucky Coin |
+| **Residential** | 3 | Housing Office, Furniture Emporium |
+| **Waterfront** | 3 | Fishing Dock, Boat Rental |
+| **Orchards** | 3 | Apple Grove, Berry Bushes |
+| **Services Row** | 4 | Smithery, Crafter's Hall, Training Yard |
+| **Guild Hall** | 2 | Guild registration, Meeting rooms |
+| **Museum** | 8 | All wings, Curator's office |
+| **Market** | 5 | 4 shops with NPCs |
 
-# Check balance
-gold = balance(character)  # Returns int
+### Grove NPCs
 
-# Spend gold (returns False if broke)
-if pay(character, 50):
-    print("Paid!")
-
-# Transfer between entities
-transfer(alice, bob, 25)
-
-# Check affordability
-if can_afford(character, 200):
-    print("Can afford it")
-```
-
-**Storage:** `character.db.currency` (int)
-**Transaction Log:** `character.db.currency_log` (last 50 transactions)
-
----
-
-## Effects System
-
-Status effects, transformations, curses - anything temporary or permanent that "happens to" someone.
-
-```python
-from world.effects import (
-    apply_effect, remove_effect, has_effect, get_effects,
-    apply_transformation, revert_transformation,
-    can_perform
-)
-
-# Apply a timed debuff (duration in seconds, 0 = permanent)
-apply_effect(character, "poisoned", category="debuff", duration=300)
-
-# Apply permanent curse
-apply_effect(character, "in_heat", category="curse")
-
-# Check for effect
-if has_effect(character, "transformed"):
-    pass
-
-# Get all effects in category
-curses = get_effects(character, category="curse")
-
-# Remove effect
-remove_effect(character, "poisoned")
-
-# Check if action is blocked
-can_act, blocker = can_perform(character, "move")
-# Returns (False, "paralyzed") if paralyzed blocks movement
-
-# Transformations (special handling)
-apply_transformation(character, "mare_form",
-    species="fae_horse",
-    features={"ears": "equine", "tail": "horse"},
-    duration=86400
-)
-revert_transformation(character)
-```
-
-### Effect Categories
-- `buff` - Positive temporary effects
-- `debuff` - Negative temporary effects  
-- `curse` - Requires cure/removal
-- `transformation` - Physical form changes
-- `status` - General flags
-- `breeding` - Heat, fertility, breeding program
-- `museum` - Curator-imposed effects
-- `environmental` - Weather/location effects
-- `quest` - Quest-related flags
-
-### Blocking Effects
-Some effects prevent actions:
-- `paralyzed` → blocks: move, attack, flee
-- `silenced` → blocks: speak, cast
-- `bound` → blocks: move, attack, flee, get, drop
-- `blinded` → blocks: look, aim
-- `sleeping` → blocks: all
-- `stunned` → blocks: all
-
-**Storage:** `character.db.effects` (dict of effect data)
+| NPC | Location | Role |
+|-----|----------|------|
+| Big Tom | Tipsy Sprite | Tavern owner, food/drink |
+| Martha | Wanderer's Rest | Innkeeper, rooms |
+| Attendant Lin | Bath House | Bath services |
+| Fingers | Lucky Coin | Gambling, information |
+| Clerk Pembrook | Housing Office | Property sales |
+| Madame Velvet | Furniture Emporium | Furniture sales |
+| Old Barnaby | Boat Rental | Boats, fishing tips |
+| Guildmaster Vera | Guild Hall | Guild registration |
+| Greta Ironhand | Smithery | Smithing, tools |
+| Whisper | Bubbling Flask | Alchemy, potions |
+| The Curator | Museum | Collections, secrets |
 
 ---
 
-## Triggers System
+## Combat System
 
-"When X happens, do Y" - the core event engine.
+### Resource Pools
 
-```python
-from world.triggers import (
-    add_trigger, remove_trigger, check_and_fire_triggers,
-    add_entry_message_trigger, add_first_visit_trigger,
-    add_pickup_curse_trigger, add_trap_trigger
-)
+| Pool | Color | At Zero | Regen |
+|------|-------|---------|-------|
+| **HP** | Red | Knocked out | 1/tick |
+| **Stamina** | Yellow | Exhausted, can't flee | 2/tick |
+| **Composure** | Magenta | Overwhelmed | 3/tick |
 
-# Add a custom trigger
-add_trigger(
-    room,
-    "enter",  # Trigger type
-    effects=[
-        {"type": "message", "text": "A chill runs down your spine..."},
-        {"type": "apply_effect", "effect_key": "spooked", "duration": 300}
-    ],
-    conditions=[
-        {"type": "time_is", "value": "night"},
-        {"type": "random", "chance": 0.3}
-    ],
-    trigger_id="spooky_entrance",
-    once=False,  # Can trigger multiple times
-    cooldown=60  # 60 second cooldown per player
-)
+### Primary Attributes
 
-# Convenience functions
-add_entry_message_trigger(room, "The air feels heavy here.")
-add_first_visit_trigger(room, "You've never been here before...")
-add_pickup_curse_trigger(item, "cursed", duration=3600)
-add_trap_trigger(item, "get", "poison", duration=300, chance=0.5)
-```
+| Attribute | Abbrev | Affects |
+|-----------|--------|---------|
+| Strength | STR | Melee damage, grapple, HP |
+| Agility | AGI | Dodge, flee, initiative |
+| Endurance | END | HP pool, stamina pool |
+| Willpower | WIL | Composure, resistance |
+| Charisma | CHA | Intimidate, seduce, befriend |
 
-### Trigger Types
-**Room:** `enter`, `exit`, `look`, `stay`, `time`, `weather`, `night`, `dawn`
-**Object:** `get`, `drop`, `give`, `use`, `look`, `touch`, `equip`, `unequip`, `break`
+### Combat Actions
 
-### Condition Types
-```python
-{"type": "time_is", "value": "night"}
-{"type": "time_in", "values": ["dawn", "dusk"]}
-{"type": "weather_is", "value": "storm"}
-{"type": "weather_in", "values": ["rain", "storm"]}
-{"type": "has_item", "item": "torch"}
-{"type": "lacks_item", "item": "key"}
-{"type": "has_effect", "effect": "cursed"}
-{"type": "lacks_effect", "effect": "immune"}
-{"type": "has_tag", "tag": "guild_member", "category": "factions"}
-{"type": "lacks_tag", "tag": "banned"}
-{"type": "currency_gte", "amount": 100}
-{"type": "currency_lt", "amount": 50}
-{"type": "random", "chance": 0.3}  # 30% chance
-{"type": "first_visit"}
-{"type": "is_player"}
-{"type": "is_npc"}
-{"type": "attr_equals", "attr": "species", "value": "human"}
-{"type": "always"}
-{"type": "never"}
-```
+**Offensive:** attack, power, grapple, tease, seduce  
+**Defensive:** defend (+30 defense), dodge (+25 evasion)  
+**Utility:** flee, struggle, intimidate, befriend, submit
 
-### Effect Types
-```python
-{"type": "message", "text": "You feel strange..."}
-{"type": "message_room", "text": "The torches flicker.", "exclude_actor": True}
-{"type": "apply_effect", "effect_key": "cursed", "category": "curse", "duration": 3600}
-{"type": "remove_effect", "effect_key": "blessed"}
-{"type": "transform", "transform_key": "wolf", "species": "wolf", "duration": 3600}
-{"type": "give_currency", "amount": 50}
-{"type": "take_currency", "amount": 25}
-{"type": "teleport", "destination": "#123"}  # dbref or key
-{"type": "give_item", "key": "rusty key", "typeclass": "typeclasses.objects.Object"}
-{"type": "take_item", "key": "entry pass"}
-{"type": "set_attr", "attr": "visited", "value": True}
-{"type": "add_tag", "tag": "marked", "category": "curses"}
-{"type": "remove_tag", "tag": "innocent"}
-{"type": "spawn_object", "key": "ghost", "typeclass": "..."}
-{"type": "chain_trigger", "trigger_id": "second_trap"}
-{"type": "start_scene", "scene": "goblin_ambush_01"}
-```
+### Creatures (12 types)
 
-**Storage:** `object.db.triggers` (list of trigger dicts)
+| Creature | Level | Behavior | Primary Attack |
+|----------|-------|----------|----------------|
+| Green Slime | 1 | Lustful | Engulf |
+| Pink Slime | 3 | Lustful | Aphrodisiac Embrace |
+| Wolf | 3 | Pack | Bite, Pounce |
+| Alpha Wolf | 6 | Pack | Savage Bite |
+| Grabbing Vine | 2 | Ambusher | Constrict |
+| Tentacle Blossom | 5 | Lustful | Probing Tendrils |
+| Goblin | 2 | Aggressive | Club Swing |
+| Goblin Shaman | 4 | Defensive | Hex, Lust Curse |
+| Lustful Wisp | 4 | Lustful | Euphoric Touch |
+| Harpy | 5 | Predatory | Talon Strike |
+| Mimic | 4 | Ambusher | Adhesive Tongue |
+| Lamia | 7 | Predatory | Constrict, Mesmerize |
+
+### Encounter Types
+
+| Type | Waves | Special |
+|------|-------|---------|
+| Single creature | 1 | Basic encounter |
+| Pack encounters | 1 | Multiple enemies |
+| Multi-wave | 2-3 | Reinforcements arrive |
+| Boss encounters | 1 | Can't flee, special rewards |
+| Ambush | 2 | Can't flee wave 1 |
+
+### Danger Levels
+
+| Level | Encounter Rate | Areas |
+|-------|----------------|-------|
+| Safe | 0% | Grove, Museum, Market |
+| Peaceful | ~5% | Newbie areas |
+| Normal | ~15% | Copper Hill |
+| Dangerous | ~23% | Deep areas |
+| Deadly | ~30% | End-game |
 
 ---
 
-## Resources System
+## Party System
 
-Gatherable nodes - fishing spots, fruit trees, ore veins, herb patches.
+- **Max Size:** 6 members
+- **Movement:** Leader controls, members auto-follow
+- **Combat:** Whole party enters together
+- **Loot Modes:** FFA, Round Robin, Leader distributes
 
-```python
-from world.resources import (
-    create_resource_node, harvest, is_depleted, respawn_node,
-    create_apple_tree, create_fishing_spot, create_ore_vein,
-    create_herb_patch, create_bug_spot
-)
+### Formations
 
-# Create custom resource
-node = create_resource_node(
-    room,
-    "apple tree",
-    resource_type="forage",
-    yields=[
-        {"key": "apple", "rarity": "common", "weight": 80},
-        {"key": "golden apple", "rarity": "rare", "weight": 5},
-        {"key": "worm", "rarity": "uncommon", "weight": 15},
-    ],
-    max_harvests=5,
-    respawn_time=600,  # 10 minutes
-    seasons=["summer", "autumn"],
-    per_player=False  # Global depletion
-)
-
-# Pre-built templates
-create_apple_tree(room)
-create_fishing_spot(room, "quiet pond")
-create_ore_vein(room, "gold")
-create_herb_patch(room)
-create_bug_spot(room, "flower garden")
-
-# Harvest
-result = harvest(node, character)
-# Returns: {
-#   "success": True,
-#   "message": "You pick a ripe apple!",
-#   "yield": <Object>,
-#   "quality": 7,
-#   "rarity": "common"
-# }
-```
-
-### Resource Types
-| Type | Tool Required | Default Verb |
-|------|---------------|--------------|
-| forage | None | pick |
-| fishing | fishing rod | catch |
-| mining | pickaxe | mine |
-| bugs | net | catch |
-| logging | axe | chop |
-| gather | None | gather |
-
-### Rarity Tiers
-- `common` - 70% base weight
-- `uncommon` - 20%
-- `rare` - 8%
-- `epic` - 1.8%
-- `legendary` - 0.2%
-
-**Storage:** `node.db.resource_*` (various attributes)
+| Formation | Front Row | Bonus |
+|-----------|-----------|-------|
+| Standard | 60% | Balanced |
+| Aggressive | 100% | +10% damage |
+| Defensive | 40% | +15% defense |
+| Scattered | 50% | -50% AoE damage |
 
 ---
 
-## Random Events System
+## Crafting System
 
-Ambient flavor and mechanical events that happen in the world.
+### Categories & Recipes
 
-```python
-from world.random_events import (
-    fire_ambient_event, fire_room_event, fire_personal_event,
-    fire_world_event, tick_random_events, register_ambient_events
-)
+| Category | Recipes | NPC Teacher |
+|----------|---------|-------------|
+| Alchemy | 18 | Whisper, Curator |
+| Smithing | 16 | Greta, Curator |
+| Cooking | 14 | Big Tom, Curator |
+| Tailoring | 14 | Skill-based, Curator |
+| Woodworking | 14 | Default, Curator |
+| Jewelcrafting | 12 | Skill-based, Curator |
+| Leatherworking | 14 | Default, Curator |
 
-# Register which ambient events can fire in a room
-register_ambient_events(room, ["rustling_leaves", "bird_song", "whispers"])
+**Total: 102 recipes**
 
-# Fire events manually
-fire_ambient_event(room)      # Random flavor text
-fire_room_event(room)         # Event with possible effects
-fire_personal_event(character) # Something happens TO them
-fire_world_event()            # Global event (shooting star, eclipse)
+### Discovery Sources
 
-# Tick function (call from global script)
-tick_random_events()  # Processes all occupied rooms
-```
-
-### Event Categories
-
-**Ambient (flavor only):**
-`rustling_leaves`, `bird_song`, `owl_hoot`, `distant_thunder`, `merchant_call`, `magical_shimmer`, `whispers`, `scurrying`
-
-**Room Events (can spawn objects):**
-`wandering_merchant`, `guard_patrol`, `dropped_coin`, `rare_butterfly`
-
-**Personal Events:**
-`pocket_lint`, `sneeze`, `yawn`, `pocket_picked` (lose gold), `lucky_find` (gain gold)
-
-**World Events:**
-`shooting_star`, `rainbow`, `eclipse`, `market_sale`
+- **Default:** Everyone knows
+- **Skill-based:** Auto-learn at skill level
+- **NPC-taught:** Learn from specific NPCs
+- **Scene-unlock:** Complete specific scenes
 
 ---
 
-## Traps System
+## Body System
 
-Hazardous objects, cursed items, defensive flora/fauna.
+### Species (25+ templates)
 
-```python
-from world.traps import (
-    create_cursed_item, create_hazardous_plant, create_defensive_creature,
-    create_trapped_container, setup_hazard_room, check_trap
-)
+Human, Elf, Orc, Demon, Angel, Neko, Kitsune, Wolf, Dragon, Lamia, Slime, Fairy, Centaur, Minotaur, Goblin, Imp, Succubus, Incubus, Vampire, Werewolf, Harpy, Mermaid, Dryad, Satyr, Custom
 
-# Cursed artifact
-idol = create_cursed_item(room, "ancient idol", 
-    curse_type="transformation_gradual",
-    chance=1.0,
-    species="frog"
-)
+### Gender Configs (12)
 
-# Hazardous plant
-bloom = create_hazardous_plant(room, "passion bloom",
-    hazard_type="pollen_fertility",
-    chance=0.3
-)
+male, female, futa, herm, dickgirl, cuntboy, trap, femboy, nulled, doll, hucow, breeder
 
-# Defensive creature
-beetle = create_defensive_creature(room, "musk beetle",
-    defense_type="spray_pheromone",
-    chance=0.5
-)
+### Shortcodes
 
-# Trapped chest
-chest = create_trapped_container(room, "ornate chest",
-    trap_effect="sting_venom",
-    loot=["gold coins", "ruby"]
-)
-
-# Environmental hazard (affects all who enter)
-setup_hazard_room(room, "pollen_fertility", chance=0.2)
 ```
-
-### Curse Types
-`transformation_gradual`, `transformation_instant`, `compulsion`, `attraction`, `heat_permanent`, `size_change`, `gender_change`, `species_drift`
-
-### Defense Mechanisms
-`spray_pheromone`, `sting_venom`, `spores_parasitic`, `ink_blind`, `song_compel`, `touch_bond`, `pollen_fertility`, `sap_adhesive`, `thorns_aphrodisiac`, `scent_predator`, `nectar_addiction`
-
----
-
-## Scenes System
-
-Branching interactive narratives for encounters, events, and anything that needs text + choices + effects without building a full NPC.
-
-See **SCENES.md** for complete documentation.
-
-```python
-from world.scenes import start_scene, get_scene, register_scene
-
-# Start a registered scene
-start_scene(character, get_scene("goblin_ambush_01"))
-
-# Or define and start inline
-my_scene = {
-    "start": {
-        "text": "Something happens!",
-        "choices": [
-            {"text": "Do thing A", "goto": "result_a"},
-            {"text": "Do thing B", "goto": "result_b"},
-        ]
-    },
-    "result_a": {"text": "A happened.", "end": True},
-    "result_b": {"text": "B happened.", "end": True},
-}
-start_scene(character, my_scene)
+<time>, <weather>, <season>
+<body.cock>, <body.pussy>, <body.breasts>
+<pronoun.subject>, <pronoun.object>, <pronoun.possessive>
+<n> (character name)
 ```
 
 ---
 
-## Integration Hooks
+## Time & Weather
 
-Add these to your typeclasses when ready:
+- **Scale:** 1 real hour ≈ 1 game day
+- **Periods:** Dawn, Morning, Noon, Afternoon, Dusk, Evening, Night
+- **Seasons:** Spring, Summer, Autumn, Winter
+- **Weather:** Clear, Cloudy, Rain, Storm, Fog, Snow, Blizzard, Hot, Windy, Magical
 
-### typeclasses/objects.py
-```python
-def at_get(self, getter, **kwargs):
-    from world.triggers import check_and_fire_triggers
-    from world.traps import check_trap
-    check_trap(self, getter, "get")
-    check_and_fire_triggers(self, "get", getter)
+---
+
+## Command Reference
+
+### Movement & Exploration
+```
+look, go <direction>, enter, leave
+danger - Check area danger level
 ```
 
-### typeclasses/rooms.py  
-```python
-def at_object_receive(self, obj, source_location, **kwargs):
-    if obj.has_account:  # Is a character
-        from world.triggers import check_and_fire_triggers
-        from world.traps import check_room_hazard
-        check_and_fire_triggers(self, "enter", obj)
-        check_room_hazard(self, obj)
+### Combat
+```
+attack <target>, power <target>, grapple <target>
+tease <target>, seduce <target>, intimidate <target>
+defend, dodge, flee, struggle, submit, befriend <target>
+combat - View combat status
+rest - Recover resources
+attributes, cskills - View stats
+defeatprefs - Set defeat preferences
+pvp on/off, challenge <player>
+```
+
+### Party
+```
+party - View party
+invite <player>, party accept/decline
+party leave, party kick <player>
+party disband, party promote <player>
+party formation <type>, party loot <mode>
+p <message> - Party chat
+party recall, follow
+```
+
+### Gathering
+```
+forage, fish, mine, catch, search, gather
+resources - View nearby resources
+```
+
+### Crafting
+```
+craft <recipe>, recipes, recipe <n>
+skills - View crafting skills
+```
+
+### Items & Economy
+```
+inventory, get <item>, drop <item>
+use <item>, equip <item>, examine <item>
+shop, buy <item>, sell <item>, value <item>
+balance
+```
+
+### Housing
+```
+home, home info, home name <n>
+home upgrade <type>, home room add <type>
+invite <player>, kick <player>
+visit <player>, knock
+```
+
+### Social
+```
+talk <npc>, greet <npc>, bow <npc>
+sit <furniture>, stand, kneel, lie
+position <pose>, cuddle <player>
+```
+
+### Body & Character
+```
+species <type>, gender <config>
+body, body <part>, body set <part> <desc>
+pronouns, pronouns set <type> <value>
+```
+
+### Time & Environment
+```
+time, weather, calendar
+```
+
+### Quests
+```
+quests, quest <n>, tasks
+abandon <quest>, turnin
 ```
 
 ---
 
-## Quick Test Commands
+## File Structure
 
 ```
-# Currency
-@py from world.currency import receive, balance; receive(me, 100); balance(me)
-
-# Effects  
-@py from world.effects import apply_effect, has_effect; apply_effect(me, "test", duration=60); has_effect(me, "test")
-
-# Scene
-@py from world.scenes import start_scene, get_scene; start_scene(me, get_scene("goblin_ambush_01"))
-
-# Clear scene if stuck
-@py me.db.active_scene = None; me.db.active_scene_data = None; me.cmdset.remove("scene_commands")
+gilderhaven_systems/
+├── world/                    # Core systems
+│   ├── __init__.py          # System imports
+│   ├── currency.py          # Money
+│   ├── effects.py           # Statuses
+│   ├── triggers.py          # Events
+│   ├── resources.py         # Gathering
+│   ├── random_events.py     # Ambient events
+│   ├── traps.py             # Hazards
+│   ├── scenes.py            # Branching stories
+│   ├── scenes_examples.py   # Pre-built scenes
+│   ├── housing.py           # Player homes
+│   ├── furniture.py         # Furniture
+│   ├── positions.py         # Poses
+│   ├── npcs.py              # NPC framework
+│   ├── items.py             # Items
+│   ├── shops.py             # Shops
+│   ├── body.py              # Body system
+│   ├── time_weather.py      # Time/weather
+│   ├── quests.py            # Quests
+│   ├── crafting.py          # Crafting
+│   ├── combat.py            # Combat engine
+│   ├── creatures.py         # Creature templates
+│   ├── parties.py           # Party system
+│   └── encounters.py        # Encounter system
+├── commands/                 # Player commands
+│   ├── __init__.py
+│   ├── housing_commands.py
+│   ├── gathering_commands.py
+│   ├── furniture_commands.py
+│   ├── position_commands.py
+│   ├── npc_commands.py
+│   ├── item_commands.py
+│   ├── shop_commands.py
+│   ├── body_commands.py
+│   ├── time_commands.py
+│   ├── quest_commands.py
+│   ├── crafting_commands.py
+│   ├── combat_commands.py
+│   └── party_commands.py
+├── content/                  # World content
+│   ├── __init__.py
+│   ├── the_grove.py         # Central hub (28 rooms)
+│   ├── museum.py            # Museum area (8 rooms)
+│   ├── market.py            # Market area (5 rooms)
+│   ├── whisperwood.py       # Forest area (6 rooms)
+│   ├── moonshallow.py       # Pond area (4 rooms)
+│   ├── sunny_meadow.py      # Meadow area (4 rooms)
+│   ├── copper_hill.py       # Mining area (6 rooms)
+│   ├── tidepools.py         # Beach area (6 rooms)
+│   └── builders.py          # Build utilities
+├── typeclasses/              # Evennia extensions
+│   ├── __init__.py
+│   └── mixins.py            # Room/Character mixins
+├── README.md                 # This file
+├── WORLDMAP.md              # Complete world map
+├── HOUSING.md               # Housing documentation
+└── SCENES.md                # Scene system docs
 ```
+
+---
+
+## Building the World
+
+```python
+# Build everything
+@py from content.the_grove import build_all; build_all()
+@py from content.builders import build_all_newbie_areas; build_all_newbie_areas()
+
+# Or build individually
+@py from content.the_grove import build_grove; build_grove()
+@py from content.the_grove import spawn_grove_npcs; spawn_grove_npcs()
+@py from content.builders import build_museum; build_museum()
+@py from content.builders import build_market; build_market()
+@py from content.builders import build_whisperwood; build_whisperwood()
+@py from content.builders import build_moonshallow; build_moonshallow()
+@py from content.builders import build_sunny_meadow; build_sunny_meadow()
+@py from content.builders import build_copper_hill; build_copper_hill()
+@py from content.builders import build_tidepools; build_tidepools()
+```
+
+---
+
+## Design Principles
+
+1. **No Death** - Combat results in capture/defeat, not killing
+2. **Consent Layers** - Players control what content they experience
+3. **Safe Zones** - The Grove is protected from violence
+4. **Consequences** - Actions have results, but everything is reversible
+5. **Player Agency** - Even in defeat, players have choices
+6. **Modular Systems** - Each system works independently
+7. **Extensible** - Easy to add new content
+
+---
+
+## License
+
+Created for private use. Evennia framework is BSD licensed.
