@@ -1,0 +1,800 @@
+2025-12-06 23:52:15 [..] Loaded.
+2025-12-06 23:52:13 [..] Loading /home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-06 23:52:15 [..] Loaded.
+2025-12-06 23:52:15 [..] twistd 24.11.0 (/home/laynie/Gilderhaven/venv/bin/python3 3.12.3) starting up.
+2025-12-06 23:52:15 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-06 23:52:15 [..] Webserver starting on 4005
+2025-12-06 23:52:15 [..] Initial setup: Creating objects (Account #1 and Limbo room) ...
+2025-12-06 23:52:15 [SS] Character Created: Witch (Caller: Witch(account 1), IP: None).
+2025-12-06 23:52:15 [..] Initial setup: Running at_initial_setup() hook.
+2025-12-06 23:52:15 [..] Initial setup: Gathering static resources using 'collectstatic'
+None2025-12-06 23:52:15 [..] 0 static files copied to '/home/laynie/Gilderhaven/gilderhaven/server/.static', 203 unmodified.
+2025-12-06 23:52:15 [..] Initial setup complete. Restarting Server once.
+2025-12-06 23:52:15 [..] Evennia Server successfully started.
+2025-12-06 23:52:16 [..] Server disconnected from the portal.
+2025-12-06 23:52:16 [..] Main loop terminated.
+2025-12-06 23:52:16 [..] Server Shut Down.
+2025-12-06 23:52:17 [..] Loaded.
+2025-12-06 23:52:16 [..] Loading /home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-06 23:52:17 [..] Loaded.
+2025-12-06 23:52:17 [..] twistd 24.11.0 (/home/laynie/Gilderhaven/venv/bin/python3 3.12.3) starting up.
+2025-12-06 23:52:17 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-06 23:52:17 [..] Webserver starting on 4005
+2025-12-06 23:52:17 [..] Evennia Server successfully restarted in 'reset' mode.
+2025-12-06 23:59:45 [WW] ip_from_request: No valid IP address found in request. Using remote_addr.
+2025-12-06 23:59:49 [WW] ip_from_request: No valid IP address found in request. Using remote_addr.
+2025-12-07 00:00:01 [SS] Authentication Success: Witch(account 1) (IP: 127.0.0.1).
+2025-12-07 00:00:01 [..] Logged in: Witch(account 1) 127.0.0.1 (1 session(s) total)
+2025-12-07 00:01:17 [WW] Warning: Idmapper flush called more than once in 5.0 min interval. Check memory usage.
+2025-12-07 00:01:43 [..] Server disconnected from the portal.
+2025-12-07 00:01:43 [..] Main loop terminated.
+2025-12-07 00:01:43 [..] Server Shut Down.
+2025-12-07 00:01:44 [..] Loaded.
+2025-12-07 00:01:43 [..] Loading /home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 00:01:44 [..] Loaded.
+2025-12-07 00:01:44 [..] twistd 24.11.0 (/home/laynie/Gilderhaven/venv/bin/python3 3.12.3) starting up.
+2025-12-07 00:01:44 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 00:01:44 [..] Webserver starting on 4005
+2025-12-07 00:01:44 [..] Server successfully reloaded.
+2025-12-07 01:50:44 [..] Ran unpuppet-hooks for 1 link-dead puppets.
+2025-12-07 01:51:44 [!!] Unhandled error in Deferred:
+2025-12-07 01:51:44 [!!] 
+	Traceback (most recent call last):
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/twisted/internet/defer.py", line 216, in maybeDeferred
+	    result = f(*args, **kwargs)
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/evennia/server/service.py", line 102, in server_maintenance
+	    evennia.ServerConfig.objects.conf("runtime", evennia.gametime.SERVER_RUNTIME)
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/evennia/server/manager.py", line 48, in conf
+	    conf.value = value  # this will pickle
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/evennia/server/models.py", line 102, in __value_set
+	    self.save()
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/evennia/utils/idmapper/models.py", line 452, in save
+	    super().save(*args, **kwargs)
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+	    self.save_base(
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1008, in save_base
+	    updated = self._save_table(
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1138, in _save_table
+	    updated = self._do_update(
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1203, in _do_update
+	    return filtered._update(values) > 0
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1288, in _update
+	    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 2060, in execute_sql
+	    row_count = super().execute_sql(result_type)
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1623, in execute_sql
+	    cursor.execute(sql, params)
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+	    return self._execute_with_wrappers(
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+	    return executor(sql, params, many, context)
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+	    with self.db.wrap_database_errors:
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+	    raise dj_exc_value.with_traceback(traceback) from exc_value
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+	    return self.cursor.execute(sql, params)
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+	    return super().execute(query, params)
+	django.db.utils.OperationalError: attempt to write a readonly database
+	
+2025-12-07 01:52:53 [!!] Unhandled error in Deferred:
+2025-12-07 01:52:53 [!!] 
+	Traceback (most recent call last):
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/twisted/internet/defer.py", line 2017, in _inlineCallbacks
+	    result = context.run(gen.send, result)
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/evennia/server/service.py", line 540, in shutdown
+	    (p.unpuppet_all(), p.at_server_shutdown())
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/evennia/accounts/accounts.py", line 589, in unpuppet_all
+	    self.unpuppet_object(self.sessions.all())
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/evennia/accounts/accounts.py", line 574, in unpuppet_object
+	    obj.sessions.remove(session)
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/evennia/objects/objects.py", line 168, in remove
+	    self.obj.save(update_fields=["db_sessid"])
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/evennia/utils/idmapper/models.py", line 452, in save
+	    super().save(*args, **kwargs)
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/models/base.py", line 857, in save
+	    self._prepare_related_fields_for_save(operation_name="save")
+	  File "/home/laynie/Gilderhaven/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1242, in _prepare_related_fields_for_save
+	    raise ValueError(
+	builtins.ValueError: save() prohibited to prevent data loss due to unsaved related object 'db_location'.
+	
+2025-12-07 01:53:53 [..] Received SIGTERM, shutting down.
+2025-12-07 01:53:53 [..] Server disconnected from the portal.
+2025-12-07 01:53:53 [..] Main loop terminated.
+2025-12-07 01:53:53 [..] Server Shut Down.
+2025-12-07 01:54:48 [..] Loaded.
+2025-12-07 01:54:47 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 01:54:48 [..] Loaded.
+2025-12-07 01:54:48 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 01:54:48 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 01:54:49 [..] Webserver starting on 4005
+2025-12-07 01:54:49 [..] Initial setup: Creating objects (Account #1 and Limbo room) ...
+2025-12-07 01:54:49 [SS] Character Created: Witch (Caller: Witch(account 1), IP: None).
+2025-12-07 01:54:49 [..] Initial setup: Running at_initial_setup() hook.
+2025-12-07 01:54:49 [..] Initial setup: Gathering static resources using 'collectstatic'
+None2025-12-07 01:54:49 [..] 0 static files copied to '/home/laynie/Gilderhaven/gilderhaven/server/.static', 203 unmodified.
+2025-12-07 01:54:49 [..] Initial setup complete. Restarting Server once.
+2025-12-07 01:54:49 [..] Evennia Server successfully started.
+2025-12-07 01:54:50 [..] Server disconnected from the portal.
+2025-12-07 01:54:50 [..] Main loop terminated.
+2025-12-07 01:54:50 [..] Server Shut Down.
+2025-12-07 01:54:51 [..] Loaded.
+2025-12-07 01:54:50 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 01:54:51 [..] Loaded.
+2025-12-07 01:54:51 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 01:54:51 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 01:54:51 [..] Webserver starting on 4005
+2025-12-07 01:54:51 [..] Evennia Server successfully restarted in 'reset' mode.
+2025-12-07 01:55:38 [SS] Authentication Success: Witch(account 1) (IP: 127.0.0.1).
+2025-12-07 01:55:38 [..] Logged in: Witch(account 1) 127.0.0.1 (1 session(s) total)
+2025-12-07 02:03:51 [WW] Warning: Idmapper flush called more than once in 5.0 min interval. Check memory usage.
+2025-12-07 02:17:51 [!!] Unhandled error in Deferred:
+2025-12-07 02:17:51 [!!] 
+	Traceback (most recent call last):
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/twisted/internet/defer.py", line 216, in maybeDeferred
+	    result = f(*args, **kwargs)
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/service.py", line 102, in server_maintenance
+	    evennia.ServerConfig.objects.conf("runtime", evennia.gametime.SERVER_RUNTIME)
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/manager.py", line 48, in conf
+	    conf.value = value  # this will pickle
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/models.py", line 102, in __value_set
+	    self.save()
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/utils/idmapper/models.py", line 452, in save
+	    super().save(*args, **kwargs)
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+	    self.save_base(
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/models/base.py", line 1008, in save_base
+	    updated = self._save_table(
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/models/base.py", line 1138, in _save_table
+	    updated = self._do_update(
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/models/base.py", line 1203, in _do_update
+	    return filtered._update(values) > 0
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/models/query.py", line 1288, in _update
+	    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 2060, in execute_sql
+	    row_count = super().execute_sql(result_type)
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1623, in execute_sql
+	    cursor.execute(sql, params)
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+	    return self._execute_with_wrappers(
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+	    return executor(sql, params, many, context)
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+	    with self.db.wrap_database_errors:
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+	    raise dj_exc_value.with_traceback(traceback) from exc_value
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+	    return self.cursor.execute(sql, params)
+	  File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+	    return super().execute(query, params)
+	django.db.utils.OperationalError: attempt to write a readonly database
+	
+2025-12-07 02:23:27 [..] Received SIGTERM, shutting down.
+2025-12-07 02:23:27 [..] Server disconnected from the portal.
+2025-12-07 02:23:27 [..] Main loop terminated.
+2025-12-07 02:23:27 [..] Server Shut Down.
+2025-12-07 02:31:47 [..] Loaded.
+2025-12-07 02:31:46 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 02:31:47 [..] Loaded.
+2025-12-07 02:31:47 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 02:31:47 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 02:31:47 [..] Webserver starting on 4005
+2025-12-07 02:31:47 [..] Initial setup: Creating objects (Account #1 and Limbo room) ...
+2025-12-07 02:31:47 [SS] Character Created: Witch (Caller: Witch(account 1), IP: None).
+2025-12-07 02:31:47 [..] Initial setup: Running at_initial_setup() hook.
+2025-12-07 02:31:47 [..] Initial setup: Gathering static resources using 'collectstatic'
+None2025-12-07 02:31:47 [..] 0 static files copied to '/home/laynie/Gilderhaven/gilderhaven/server/.static', 203 unmodified.
+2025-12-07 02:31:47 [..] Initial setup complete. Restarting Server once.
+2025-12-07 02:31:47 [..] Evennia Server successfully started.
+2025-12-07 02:31:48 [..] Server disconnected from the portal.
+2025-12-07 02:31:48 [..] Main loop terminated.
+2025-12-07 02:31:48 [..] Server Shut Down.
+2025-12-07 02:31:50 [..] Loaded.
+2025-12-07 02:31:49 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 02:31:50 [..] Loaded.
+2025-12-07 02:31:50 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 02:31:50 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 02:31:50 [..] Webserver starting on 4005
+2025-12-07 02:31:50 [..] Evennia Server successfully restarted in 'reset' mode.
+2025-12-07 02:32:05 [SS] Authentication Success: Witch(account 1) (IP: 127.0.0.1).
+2025-12-07 02:32:05 [..] Logged in: Witch(account 1) 127.0.0.1 (1 session(s) total)
+2025-12-07 03:17:27 [..] Server disconnected from the portal.
+2025-12-07 03:17:27 [..] Main loop terminated.
+2025-12-07 03:17:27 [..] Server Shut Down.
+2025-12-07 03:17:28 [..] Loaded.
+2025-12-07 03:17:27 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 03:17:28 [..] Loaded.
+2025-12-07 03:17:28 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 03:17:28 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 03:17:28 [..] Webserver starting on 4005
+2025-12-07 03:17:28 [..] Server successfully reloaded.
+2025-12-07 03:20:15 [..] Server disconnected from the portal.
+2025-12-07 03:20:15 [..] Main loop terminated.
+2025-12-07 03:20:15 [..] Server Shut Down.
+2025-12-07 03:20:16 [..] Loaded.
+2025-12-07 03:20:15 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 03:20:16 [..] Loaded.
+2025-12-07 03:20:16 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 03:20:16 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 03:20:16 [..] Webserver starting on 4005
+2025-12-07 03:20:16 [..] Server successfully reloaded.
+2025-12-07 03:21:06 [!!] Traceback (most recent call last):
+2025-12-07 03:21:06 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdhandler.py", line 630, in _run_command
+2025-12-07 03:21:06 [!!]     ret = cmd.func()
+2025-12-07 03:21:06 [!!]           ^^^^^^^^^^
+2025-12-07 03:21:06 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/world/scenes.py", line 639, in func
+2025-12-07 03:21:06 [!!]     advance_scene(self.caller, choice_index=choice)
+2025-12-07 03:21:06 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/world/scenes.py", line 491, in advance_scene
+2025-12-07 03:21:06 [!!]     choices = get_available_choices(node_data, character, state)
+2025-12-07 03:21:06 [!!]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 03:21:06 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/world/scenes.py", line 384, in get_available_choices
+2025-12-07 03:21:06 [!!]     if check_all_scene_conditions([condition] if isinstance(condition, dict) else condition,
+2025-12-07 03:21:06 [!!]       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 03:21:06 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/world/scenes.py", line 280, in check_all_scene_conditions
+2025-12-07 03:21:06 [!!]     if not check_scene_condition(condition, character, state):
+2025-12-07 03:21:06 [!!]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 03:21:06 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/world/scenes.py", line 243, in check_scene_condition
+2025-12-07 03:21:06 [!!]     cond_type = condition.get("type")
+2025-12-07 03:21:06 [!!]                 ^^^^^^^^^^^^^
+2025-12-07 03:21:06 [!!] AttributeError: 'str' object has no attribute 'get'
+2025-12-07 03:21:06 [EE] User input was: '2'.
+2025-12-07 03:23:27 [..] Server disconnected from the portal.
+2025-12-07 03:23:27 [..] Main loop terminated.
+2025-12-07 03:23:27 [..] Server Shut Down.
+2025-12-07 03:23:28 [..] Loaded.
+2025-12-07 03:23:27 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 03:23:28 [..] Loaded.
+2025-12-07 03:23:28 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 03:23:28 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 03:23:28 [..] Webserver starting on 4005
+2025-12-07 03:23:28 [..] Server successfully reloaded.
+2025-12-07 03:25:37 [..] Scene 'goblin_ambush_01' completed by Witch
+2025-12-07 03:32:28 [WW] Warning: Idmapper flush called more than once in 5.0 min interval. Check memory usage.
+2025-12-07 04:11:35 [..] Server disconnected from the portal.
+2025-12-07 04:11:35 [..] Main loop terminated.
+2025-12-07 04:11:35 [..] Server Shut Down.
+2025-12-07 04:11:37 [..] Loaded.
+2025-12-07 04:11:36 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 04:11:37 [EE] Could not find file-help module world.help_entries (skipping).
+2025-12-07 04:11:37 [..] Loaded.
+2025-12-07 04:11:37 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 04:11:37 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 04:11:37 [..] Webserver starting on 4005
+2025-12-07 04:11:37 [..] Server successfully reloaded.
+2025-12-07 04:11:37 [!!] Traceback (most recent call last):
+2025-12-07 04:11:37 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 186, in import_cmdset
+2025-12-07 04:11:37 [!!]     raise exc.with_traceback(tb)
+2025-12-07 04:11:37 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 181, in import_cmdset
+2025-12-07 04:11:37 [!!]     module = import_module(modpath, package="evennia")
+2025-12-07 04:11:37 [!!]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 04:11:37 [!!]   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+2025-12-07 04:11:37 [!!]     return _bootstrap._gcd_import(name[level:], package, level)
+2025-12-07 04:11:37 [!!]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 04:11:37 [!!]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 04:11:37 [!!]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 04:11:37 [!!]   File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+2025-12-07 04:11:37 [!!]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 04:11:37 [!!]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 04:11:37 [!!]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 04:11:37 [!!]   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-12-07 04:11:37 [!!]   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-12-07 04:11:37 [!!]   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+2025-12-07 04:11:37 [!!]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 04:11:37 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/commands/__init__.py", line 14, in <module>
+2025-12-07 04:11:37 [!!]     from .housing_commands import HousingCmdSet
+2025-12-07 04:11:37 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/commands/housing_commands.py", line 21, in <module>
+2025-12-07 04:11:37 [!!]     from world.housing import (
+2025-12-07 04:11:37 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/world/__init__.py", line 135, in <module>
+2025-12-07 04:11:37 [!!]     from .housing import (
+2025-12-07 04:11:37 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/world/housing.py", line 25, in <module>
+2025-12-07 04:11:37 [!!]     from world.currency import get_balance, remove_currency, add_currency
+2025-12-07 04:11:37 [!!] ImportError: cannot import name 'get_balance' from 'world.currency' (/home/laynie/Gilderhaven/gilderhaven/world/currency.py)
+2025-12-07 04:11:37 [EE] Traceback (most recent call last):
+2025-12-07 04:11:37 [EE]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 186, in import_cmdset
+2025-12-07 04:11:37 [EE]     raise exc.with_traceback(tb)
+2025-12-07 04:11:37 [EE]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 181, in import_cmdset
+2025-12-07 04:11:37 [EE]     module = import_module(modpath, package="evennia")
+2025-12-07 04:11:37 [EE]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 04:11:37 [EE]   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+2025-12-07 04:11:37 [EE]     return _bootstrap._gcd_import(name[level:], package, level)
+2025-12-07 04:11:37 [EE]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 04:11:37 [EE]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 04:11:37 [EE]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 04:11:37 [EE]   File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+2025-12-07 04:11:37 [EE]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 04:11:37 [EE]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 04:11:37 [EE]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 04:11:37 [EE]   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-12-07 04:11:37 [EE]   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-12-07 04:11:37 [EE]   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+2025-12-07 04:11:37 [EE]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 04:11:37 [EE]   File "/home/laynie/Gilderhaven/gilderhaven/commands/__init__.py", line 14, in <module>
+2025-12-07 04:11:37 [EE]     from .housing_commands import HousingCmdSet
+2025-12-07 04:11:37 [EE]   File "/home/laynie/Gilderhaven/gilderhaven/commands/housing_commands.py", line 21, in <module>
+2025-12-07 04:11:37 [EE]     from world.housing import (
+2025-12-07 04:11:37 [EE]   File "/home/laynie/Gilderhaven/gilderhaven/world/__init__.py", line 135, in <module>
+2025-12-07 04:11:37 [EE]     from .housing import (
+2025-12-07 04:11:37 [EE]   File "/home/laynie/Gilderhaven/gilderhaven/world/housing.py", line 25, in <module>
+2025-12-07 04:11:37 [EE]     from world.currency import get_balance, remove_currency, add_currency
+2025-12-07 04:11:37 [EE] ImportError: cannot import name 'get_balance' from 'world.currency' (/home/laynie/Gilderhaven/gilderhaven/world/currency.py)
+None2025-12-07 04:11:37 [EE] Error loading cmdset 'commands.default_cmdsets.SessionCmdSet'
+2025-12-07 04:11:37 [EE] (Traceback was logged 25-12-07 04:11:37)
+None2025-12-07 04:11:37 [EE] Error encountered for cmdset at path 'commands.default_cmdsets.SessionCmdSet'.
+2025-12-07 04:11:37 [EE] Replacing with fallback 'evennia.commands.default.cmdset_session.SessionCmdSet'.
+2025-12-07 04:11:37 [!!] Traceback (most recent call last):
+2025-12-07 04:11:37 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/typeclasses/models.py", line 288, in set_class_from_typeclass
+2025-12-07 04:11:37 [!!]     self.__class__ = class_from_module(self.db_typeclass_path)
+2025-12-07 04:11:37 [!!]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 04:11:37 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/utils/utils.py", line 1637, in class_from_module
+2025-12-07 04:11:37 [!!]     if not importlib.util.find_spec(testpath, package="evennia"):
+2025-12-07 04:11:37 [!!]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 04:11:37 [!!]   File "<frozen importlib.util>", line 92, in find_spec
+2025-12-07 04:11:37 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/world/__init__.py", line 135, in <module>
+2025-12-07 04:11:37 [!!]     from .housing import (
+2025-12-07 04:11:37 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/world/housing.py", line 25, in <module>
+2025-12-07 04:11:37 [!!]     from world.currency import get_balance, remove_currency, add_currency
+2025-12-07 04:11:37 [!!] ImportError: cannot import name 'get_balance' from 'world.currency' (/home/laynie/Gilderhaven/gilderhaven/world/currency.py)
+2025-12-07 04:16:02 [..] Server disconnected from the portal.
+2025-12-07 04:16:02 [..] Main loop terminated.
+2025-12-07 04:16:02 [..] Server Shut Down.
+2025-12-07 04:16:03 [..] Loaded.
+2025-12-07 04:16:02 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 04:16:03 [..] Loaded.
+2025-12-07 04:16:03 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 04:16:03 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 04:16:03 [..] Webserver starting on 4005
+2025-12-07 04:16:03 [..] Server successfully reloaded.
+2025-12-07 04:19:27 [!!] Traceback (most recent call last):
+2025-12-07 04:19:27 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdhandler.py", line 630, in _run_command
+2025-12-07 04:19:27 [!!]     ret = cmd.func()
+2025-12-07 04:19:27 [!!]           ^^^^^^^^^^
+2025-12-07 04:19:27 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/commands/housing_commands.py", line 92, in func
+2025-12-07 04:19:27 [!!]     self.add_room(subargs)
+2025-12-07 04:19:27 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/commands/housing_commands.py", line 211, in add_room
+2025-12-07 04:19:27 [!!]     success, msg, room = add_room(self.caller, room_type)
+2025-12-07 04:19:27 [!!]                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 04:19:27 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/world/housing.py", line 485, in add_room
+2025-12-07 04:19:27 [!!]     create_object(
+2025-12-07 04:19:27 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/utils/create.py", line 117, in create_object
+2025-12-07 04:19:27 [!!]     return ObjectDB.objects.create_object(*args, **kwargs)
+2025-12-07 04:19:27 [!!]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 04:19:27 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/objects/manager.py", line 715, in create_object
+2025-12-07 04:19:27 [!!]     new_object.save()
+2025-12-07 04:19:27 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/utils/idmapper/models.py", line 452, in save
+2025-12-07 04:19:27 [!!]     super().save(*args, **kwargs)
+2025-12-07 04:19:27 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+2025-12-07 04:19:27 [!!]     self.save_base(
+2025-12-07 04:19:27 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/db/models/base.py", line 1023, in save_base
+2025-12-07 04:19:27 [!!]     post_save.send(
+2025-12-07 04:19:27 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/django/dispatch/dispatcher.py", line 189, in send
+2025-12-07 04:19:27 [!!]     response = receiver(signal=self, sender=sender, **named)
+2025-12-07 04:19:27 [!!]                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 04:19:27 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/typeclasses/models.py", line 84, in call_at_first_save
+2025-12-07 04:19:27 [!!]     instance.at_first_save()
+2025-12-07 04:19:27 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/objects/objects.py", line 1968, in at_first_save
+2025-12-07 04:19:27 [!!]     self.locks.add(cdict["locks"])
+2025-12-07 04:19:27 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/locks/lockhandler.py", line 396, in add
+2025-12-07 04:19:27 [!!]     self._cache_locks(storage_lockstring)
+2025-12-07 04:19:27 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/locks/lockhandler.py", line 298, in _cache_locks
+2025-12-07 04:19:27 [!!]     self.locks = self._parse_lockstring(storage_lockstring)
+2025-12-07 04:19:27 [!!]                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 04:19:27 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/locks/lockhandler.py", line 289, in _parse_lockstring
+2025-12-07 04:19:27 [!!]     raise LockException("\n".join(elist))
+2025-12-07 04:19:27 [!!] evennia.locks.lockhandler.LockException: Lock: lock-function 'home_access(178)' is not available.
+2025-12-07 04:19:27 [EE] User input was: 'home addroom bedroom'.
+2025-12-07 04:22:46 [..] Server disconnected from the portal.
+2025-12-07 04:22:46 [..] Main loop terminated.
+2025-12-07 04:22:46 [..] Server Shut Down.
+2025-12-07 04:22:47 [..] Loaded.
+2025-12-07 04:22:46 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 04:22:47 [..] Loaded.
+2025-12-07 04:22:47 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 04:22:47 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 04:22:47 [..] Webserver starting on 4005
+2025-12-07 04:22:47 [..] Server successfully reloaded.
+2025-12-07 04:31:47 [WW] Warning: Idmapper flush called more than once in 5.0 min interval. Check memory usage.
+2025-12-07 05:12:14 [SS] Authentication Success: Witch(account 1) (IP: 127.0.0.1).
+2025-12-07 05:12:14 [..] Logged out: Witch(account 1) 127.0.0.1 (1 sessions(s) remaining) (Logged in from elsewhere. Disconnecting.)
+2025-12-07 05:12:14 [..] Logged in: Witch(account 1) 127.0.0.1 (1 session(s) total)
+2025-12-07 05:12:18 [..] Server disconnected from the portal.
+2025-12-07 05:12:18 [..] Main loop terminated.
+2025-12-07 05:12:18 [..] Server Shut Down.
+2025-12-07 05:12:20 [..] Loaded.
+2025-12-07 05:12:19 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 05:12:20 [..] Loaded.
+2025-12-07 05:12:20 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 05:12:20 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 05:12:20 [..] Webserver starting on 4005
+2025-12-07 05:12:20 [..] Server successfully reloaded.
+2025-12-07 05:17:08 [..] Server disconnected from the portal.
+2025-12-07 05:17:08 [..] Main loop terminated.
+2025-12-07 05:17:08 [..] Server Shut Down.
+2025-12-07 05:17:09 [..] Loaded.
+2025-12-07 05:17:08 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 05:17:09 [..] Loaded.
+2025-12-07 05:17:09 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 05:17:09 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 05:17:09 [..] Webserver starting on 4005
+2025-12-07 05:17:09 [..] Server successfully reloaded.
+2025-12-07 05:40:23 [..] Built Whisperwood: 5 rooms
+2025-12-07 05:40:24 [..] Built Moonshallow: 5 rooms
+2025-12-07 05:40:24 [..] Built Sunny Meadow: 5 rooms
+2025-12-07 05:40:25 [..] Built Copper Hill: 6 rooms
+2025-12-07 05:40:25 [..] Built Tidepools: 5 rooms
+2025-12-07 05:40:25 [..] Built all newbie areas: 26 total rooms
+2025-12-07 05:53:20 [..] Server disconnected from the portal.
+2025-12-07 05:53:20 [..] Main loop terminated.
+2025-12-07 05:53:20 [..] Server Shut Down.
+2025-12-07 05:53:22 [..] Loaded.
+2025-12-07 05:53:20 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 05:53:22 [..] Loaded.
+2025-12-07 05:53:22 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 05:53:22 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 05:53:22 [..] Webserver starting on 4005
+2025-12-07 05:53:22 [..] Server successfully reloaded.
+2025-12-07 05:53:28 [..] Cleaned up 5 rooms/objects from Whisperwood
+2025-12-07 05:53:28 [..] Cleaned up 5 rooms/objects from Moonshallow
+2025-12-07 05:53:29 [..] Cleaned up 5 rooms/objects from Sunny Meadow
+2025-12-07 05:53:30 [..] Cleaned up 6 rooms/objects from Copper Hill
+2025-12-07 05:53:30 [..] Cleaned up 5 rooms/objects from Tidepools
+2025-12-07 05:53:30 [..] Cleaned up all newbie areas: 26 total rooms
+2025-12-07 05:53:49 [..] Connected Limbo to Gate Plaza
+2025-12-07 05:54:05 [..] Built Whisperwood: 5 rooms
+2025-12-07 05:54:05 [..] Built Moonshallow: 5 rooms
+2025-12-07 05:54:06 [..] Built Sunny Meadow: 5 rooms
+2025-12-07 05:54:06 [..] Built Copper Hill: 6 rooms
+2025-12-07 05:54:06 [..] Built Tidepools: 5 rooms
+2025-12-07 05:54:06 [..] Built all newbie areas: 26 total rooms
+2025-12-07 06:01:34 [..] Server disconnected from the portal.
+2025-12-07 06:01:34 [..] Main loop terminated.
+2025-12-07 06:01:34 [..] Server Shut Down.
+2025-12-07 06:01:35 [..] Loaded.
+2025-12-07 06:01:34 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 06:01:35 [..] Loaded.
+2025-12-07 06:01:35 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 06:01:35 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 06:01:36 [..] Webserver starting on 4005
+2025-12-07 06:01:36 [..] Server successfully reloaded.
+2025-12-07 06:15:17 [..] Server disconnected from the portal.
+2025-12-07 06:15:17 [..] Main loop terminated.
+2025-12-07 06:15:17 [..] Server Shut Down.
+2025-12-07 06:15:18 [..] Loaded.
+2025-12-07 06:15:17 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 06:15:18 [..] Loaded.
+2025-12-07 06:15:18 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 06:15:18 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 06:15:18 [..] Webserver starting on 4005
+2025-12-07 06:15:18 [..] Server successfully reloaded.
+2025-12-07 06:16:47 [!!] Traceback (most recent call last):
+2025-12-07 06:16:47 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdhandler.py", line 630, in _run_command
+2025-12-07 06:16:47 [!!]     ret = cmd.func()
+2025-12-07 06:16:47 [!!]           ^^^^^^^^^^
+2025-12-07 06:16:47 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/commands/furniture_commands.py", line 73, in func
+2025-12-07 06:16:47 [!!]     self.place_furniture(subargs)
+2025-12-07 06:16:47 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/commands/furniture_commands.py", line 281, in place_furniture
+2025-12-07 06:16:47 [!!]     if perm < 4:  # Need resident or higher
+2025-12-07 06:16:47 [!!]        ^^^^^^^^
+2025-12-07 06:16:47 [!!] TypeError: '<' not supported between instances of 'str' and 'int'
+2025-12-07 06:16:47 [EE] User input was: 'furniture place wooden chair'.
+2025-12-07 06:18:10 [..] Server disconnected from the portal.
+2025-12-07 06:18:10 [..] Main loop terminated.
+2025-12-07 06:18:10 [..] Server Shut Down.
+2025-12-07 06:18:12 [..] Loaded.
+2025-12-07 06:18:11 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 06:18:12 [..] Loaded.
+2025-12-07 06:18:12 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 06:18:12 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 06:18:12 [..] Webserver starting on 4005
+2025-12-07 06:18:12 [..] Server successfully reloaded.
+2025-12-07 06:27:12 [WW] Warning: Idmapper flush called more than once in 5.0 min interval. Check memory usage.
+2025-12-07 06:27:42 [..] Server disconnected from the portal.
+2025-12-07 06:27:42 [..] Main loop terminated.
+2025-12-07 06:27:42 [..] Server Shut Down.
+2025-12-07 06:27:43 [..] Loaded.
+2025-12-07 06:27:42 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 06:27:43 [..] Loaded.
+2025-12-07 06:27:43 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 06:27:43 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 06:27:43 [..] Webserver starting on 4005
+2025-12-07 06:27:43 [..] Server successfully reloaded.
+2025-12-07 06:28:38 [..] Built Museum with 8 rooms
+2025-12-07 06:29:06 [!!] Traceback (most recent call last):
+2025-12-07 06:29:06 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/objects/objects.py", line 1330, in move_to
+2025-12-07 06:29:06 [!!]     self.at_post_move(source_location, move_type=move_type, **kwargs)
+2025-12-07 06:29:06 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/objects/objects.py", line 3233, in at_post_move
+2025-12-07 06:29:06 [!!]     self.msg(text=(self.at_look(self.location), {"type": "look"}))
+2025-12-07 06:29:06 [!!]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 06:29:06 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/objects/objects.py", line 2681, in at_look
+2025-12-07 06:29:06 [!!]     description = target.return_appearance(self, **kwargs)
+2025-12-07 06:29:06 [!!]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 06:29:06 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/typeclasses/base_rooms.py", line 991, in return_appearance
+2025-12-07 06:29:06 [!!]     desc = self.process_shortcodes(desc, looker)
+2025-12-07 06:29:06 [!!]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 06:29:06 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/typeclasses/base_rooms.py", line 878, in process_shortcodes
+2025-12-07 06:29:06 [!!]     text = text.replace("<ambient.sound>", self.ambient_sounds or "")
+2025-12-07 06:29:06 [!!]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 06:29:06 [!!] TypeError: replace() argument 2 must be str, not _SaverList
+2025-12-07 06:29:14 [!!] Traceback (most recent call last):
+2025-12-07 06:29:14 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdhandler.py", line 630, in _run_command
+2025-12-07 06:29:14 [!!]     ret = cmd.func()
+2025-12-07 06:29:14 [!!]           ^^^^^^^^^^
+2025-12-07 06:29:14 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/default/general.py", line 90, in func
+2025-12-07 06:29:14 [!!]     desc = caller.at_look(target)
+2025-12-07 06:29:14 [!!]            ^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 06:29:14 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/objects/objects.py", line 2681, in at_look
+2025-12-07 06:29:14 [!!]     description = target.return_appearance(self, **kwargs)
+2025-12-07 06:29:14 [!!]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 06:29:14 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/typeclasses/base_rooms.py", line 991, in return_appearance
+2025-12-07 06:29:14 [!!]     desc = self.process_shortcodes(desc, looker)
+2025-12-07 06:29:14 [!!]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 06:29:14 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/typeclasses/base_rooms.py", line 878, in process_shortcodes
+2025-12-07 06:29:14 [!!]     text = text.replace("<ambient.sound>", self.ambient_sounds or "")
+2025-12-07 06:29:14 [!!]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 06:29:14 [!!] TypeError: replace() argument 2 must be str, not _SaverList
+2025-12-07 06:29:14 [EE] User input was: 'look'.
+2025-12-07 06:30:39 [..] Server disconnected from the portal.
+2025-12-07 06:30:39 [..] Main loop terminated.
+2025-12-07 06:30:39 [..] Server Shut Down.
+2025-12-07 06:30:41 [..] Loaded.
+2025-12-07 06:30:39 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 06:30:41 [..] Loaded.
+2025-12-07 06:30:41 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 06:30:41 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 06:30:41 [..] Webserver starting on 4005
+2025-12-07 06:30:41 [..] Server successfully reloaded.
+2025-12-07 06:30:50 [..] Cleaned up 8 rooms/objects from Museum
+2025-12-07 06:31:14 [..] Built Museum with 8 rooms
+2025-12-07 06:39:41 [WW] Warning: Idmapper flush called more than once in 5.0 min interval. Check memory usage.
+2025-12-07 06:42:51 [..] Server disconnected from the portal.
+2025-12-07 06:42:51 [..] Main loop terminated.
+2025-12-07 06:42:51 [..] Server Shut Down.
+2025-12-07 06:42:53 [..] Loaded.
+2025-12-07 06:42:51 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 06:42:53 [..] Loaded.
+2025-12-07 06:42:53 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 06:42:53 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 06:42:53 [..] Webserver starting on 4005
+2025-12-07 06:42:53 [..] Server successfully reloaded.
+2025-12-07 06:43:06 [..] Cleaned up 8 rooms/objects from Museum
+2025-12-07 06:43:25 [..] Spawned The Curator in Museum Foyer
+2025-12-07 06:43:25 [..] Built Museum with 8 rooms
+2025-12-07 06:51:22 [..] Server disconnected from the portal.
+2025-12-07 06:51:22 [..] Main loop terminated.
+2025-12-07 06:51:22 [..] Server Shut Down.
+2025-12-07 06:51:24 [..] Loaded.
+2025-12-07 06:51:23 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 06:51:24 [..] Loaded.
+2025-12-07 06:51:24 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 06:51:24 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 06:51:24 [..] Webserver starting on 4005
+2025-12-07 06:51:24 [..] Server successfully reloaded.
+2025-12-07 07:08:32 [..] Server disconnected from the portal.
+2025-12-07 07:08:32 [..] Main loop terminated.
+2025-12-07 07:08:32 [..] Server Shut Down.
+2025-12-07 07:08:32 [..] Loaded.
+2025-12-07 07:08:32 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 07:08:32 [..] Loaded.
+2025-12-07 07:08:32 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 07:08:32 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 07:08:33 [..] Webserver starting on 4005
+2025-12-07 07:08:33 [..] Server successfully reloaded.
+2025-12-07 07:17:33 [WW] Warning: Idmapper flush called more than once in 5.0 min interval. Check memory usage.
+2025-12-07 09:19:44 [SS] Authentication Success: Witch(account 1) (IP: 127.0.0.1).
+2025-12-07 09:19:44 [..] Logged out: Witch(account 1) 127.0.0.1 (1 sessions(s) remaining) (Logged in from elsewhere. Disconnecting.)
+2025-12-07 09:19:44 [..] Logged in: Witch(account 1) 127.0.0.1 (1 session(s) total)
+2025-12-07 09:23:08 [..] Server disconnected from the portal.
+2025-12-07 09:23:08 [..] Main loop terminated.
+2025-12-07 09:23:08 [..] Server Shut Down.
+2025-12-07 09:23:10 [..] Loaded.
+2025-12-07 09:23:09 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 09:23:10 [..] Loaded.
+2025-12-07 09:23:10 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 09:23:10 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 09:23:10 [..] Webserver starting on 4005
+2025-12-07 09:23:10 [..] Server successfully reloaded.
+2025-12-07 09:32:10 [WW] Warning: Idmapper flush called more than once in 5.0 min interval. Check memory usage.
+2025-12-07 09:33:09 [..] Server disconnected from the portal.
+2025-12-07 09:33:09 [..] Main loop terminated.
+2025-12-07 09:33:09 [..] Server Shut Down.
+2025-12-07 09:33:10 [..] Loaded.
+2025-12-07 09:33:09 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 09:33:10 [..] Loaded.
+2025-12-07 09:33:10 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 09:33:10 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 09:33:10 [..] Webserver starting on 4005
+2025-12-07 09:33:10 [..] Server successfully reloaded.
+2025-12-07 09:33:10 [!!] Traceback (most recent call last):
+2025-12-07 09:33:10 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 186, in import_cmdset
+2025-12-07 09:33:10 [!!]     raise exc.with_traceback(tb)
+2025-12-07 09:33:10 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 181, in import_cmdset
+2025-12-07 09:33:10 [!!]     module = import_module(modpath, package="evennia")
+2025-12-07 09:33:10 [!!]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 09:33:10 [!!]   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+2025-12-07 09:33:10 [!!]     return _bootstrap._gcd_import(name[level:], package, level)
+2025-12-07 09:33:10 [!!]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 09:33:10 [!!]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 09:33:10 [!!]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 09:33:10 [!!]   File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+2025-12-07 09:33:10 [!!]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 09:33:10 [!!]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 09:33:10 [!!]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 09:33:10 [!!]   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-12-07 09:33:10 [!!]   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-12-07 09:33:10 [!!]   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+2025-12-07 09:33:10 [!!]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 09:33:10 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/commands/__init__.py", line 26, in <module>
+2025-12-07 09:33:10 [!!]     from .shop_commands import ShopCmdSet
+2025-12-07 09:33:10 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/commands/shop_commands.py", line 15, in <module>
+2025-12-07 09:33:10 [!!]     from world.shops import (
+2025-12-07 09:33:10 [!!] ModuleNotFoundError: No module named 'world.shops'
+2025-12-07 09:33:10 [EE] Traceback (most recent call last):
+2025-12-07 09:33:10 [EE]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 186, in import_cmdset
+2025-12-07 09:33:10 [EE]     raise exc.with_traceback(tb)
+2025-12-07 09:33:10 [EE]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 181, in import_cmdset
+2025-12-07 09:33:10 [EE]     module = import_module(modpath, package="evennia")
+2025-12-07 09:33:10 [EE]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 09:33:10 [EE]   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+2025-12-07 09:33:10 [EE]     return _bootstrap._gcd_import(name[level:], package, level)
+2025-12-07 09:33:10 [EE]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 09:33:10 [EE]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 09:33:10 [EE]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 09:33:10 [EE]   File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+2025-12-07 09:33:10 [EE]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 09:33:10 [EE]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 09:33:10 [EE]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 09:33:10 [EE]   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-12-07 09:33:10 [EE]   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-12-07 09:33:10 [EE]   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+2025-12-07 09:33:10 [EE]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 09:33:10 [EE]   File "/home/laynie/Gilderhaven/gilderhaven/commands/__init__.py", line 26, in <module>
+2025-12-07 09:33:10 [EE]     from .shop_commands import ShopCmdSet
+2025-12-07 09:33:10 [EE]   File "/home/laynie/Gilderhaven/gilderhaven/commands/shop_commands.py", line 15, in <module>
+2025-12-07 09:33:10 [EE]     from world.shops import (
+2025-12-07 09:33:10 [EE] ModuleNotFoundError: No module named 'world.shops'
+None2025-12-07 09:33:10 [EE] Error loading cmdset 'commands.default_cmdsets.SessionCmdSet'
+2025-12-07 09:33:10 [EE] (Traceback was logged 25-12-07 09:33:10)
+None2025-12-07 09:33:10 [EE] Error encountered for cmdset at path 'commands.default_cmdsets.SessionCmdSet'.
+2025-12-07 09:33:10 [EE] Replacing with fallback 'evennia.commands.default.cmdset_session.SessionCmdSet'.
+2025-12-07 09:33:26 [!!] Traceback (most recent call last):
+2025-12-07 09:33:26 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 186, in import_cmdset
+2025-12-07 09:33:26 [!!]     raise exc.with_traceback(tb)
+2025-12-07 09:33:26 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 181, in import_cmdset
+2025-12-07 09:33:26 [!!]     module = import_module(modpath, package="evennia")
+2025-12-07 09:33:26 [!!]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 09:33:26 [!!]   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+2025-12-07 09:33:26 [!!]     return _bootstrap._gcd_import(name[level:], package, level)
+2025-12-07 09:33:26 [!!]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 09:33:26 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/commands/__init__.py", line 26, in <module>
+2025-12-07 09:33:26 [!!]     from .shop_commands import ShopCmdSet
+2025-12-07 09:33:26 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/commands/shop_commands.py", line 15, in <module>
+2025-12-07 09:33:26 [!!]     from world.shops import (
+2025-12-07 09:33:26 [!!] ModuleNotFoundError: No module named 'world.shops'
+2025-12-07 09:33:26 [EE] Traceback (most recent call last):
+2025-12-07 09:33:26 [EE]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 186, in import_cmdset
+2025-12-07 09:33:26 [EE]     raise exc.with_traceback(tb)
+2025-12-07 09:33:26 [EE]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 181, in import_cmdset
+2025-12-07 09:33:26 [EE]     module = import_module(modpath, package="evennia")
+2025-12-07 09:33:26 [EE]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 09:33:26 [EE]   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+2025-12-07 09:33:26 [EE]     return _bootstrap._gcd_import(name[level:], package, level)
+2025-12-07 09:33:26 [EE]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 09:33:26 [EE]   File "/home/laynie/Gilderhaven/gilderhaven/commands/__init__.py", line 26, in <module>
+2025-12-07 09:33:26 [EE]     from .shop_commands import ShopCmdSet
+2025-12-07 09:33:26 [EE]   File "/home/laynie/Gilderhaven/gilderhaven/commands/shop_commands.py", line 15, in <module>
+2025-12-07 09:33:26 [EE]     from world.shops import (
+2025-12-07 09:33:26 [EE] ModuleNotFoundError: No module named 'world.shops'
+None2025-12-07 09:33:26 [EE] Error loading cmdset 'commands.default_cmdsets.AccountCmdSet'
+2025-12-07 09:33:26 [EE] (Traceback was logged 25-12-07 09:33:26)
+None2025-12-07 09:33:26 [EE] Error encountered for cmdset at path 'commands.default_cmdsets.AccountCmdSet'.
+2025-12-07 09:33:26 [EE] Replacing with fallback 'evennia.commands.default.cmdset_account.AccountCmdSet'.
+2025-12-07 09:33:26 [!!] Traceback (most recent call last):
+2025-12-07 09:33:26 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 186, in import_cmdset
+2025-12-07 09:33:26 [!!]     raise exc.with_traceback(tb)
+2025-12-07 09:33:26 [!!]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 181, in import_cmdset
+2025-12-07 09:33:26 [!!]     module = import_module(modpath, package="evennia")
+2025-12-07 09:33:26 [!!]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 09:33:26 [!!]   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+2025-12-07 09:33:26 [!!]     return _bootstrap._gcd_import(name[level:], package, level)
+2025-12-07 09:33:26 [!!]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+2025-12-07 09:33:26 [!!]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 09:33:26 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/commands/__init__.py", line 26, in <module>
+2025-12-07 09:33:26 [!!]     from .shop_commands import ShopCmdSet
+2025-12-07 09:33:26 [!!]   File "/home/laynie/Gilderhaven/gilderhaven/commands/shop_commands.py", line 15, in <module>
+2025-12-07 09:33:26 [!!]     from world.shops import (
+2025-12-07 09:33:26 [!!] ModuleNotFoundError: No module named 'world.shops'
+2025-12-07 09:33:26 [EE] Traceback (most recent call last):
+2025-12-07 09:33:26 [EE]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 186, in import_cmdset
+2025-12-07 09:33:26 [EE]     raise exc.with_traceback(tb)
+2025-12-07 09:33:26 [EE]   File "/home/laynie/evennia-env/lib/python3.12/site-packages/evennia/commands/cmdsethandler.py", line 181, in import_cmdset
+2025-12-07 09:33:26 [EE]     module = import_module(modpath, package="evennia")
+2025-12-07 09:33:26 [EE]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 09:33:26 [EE]   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+2025-12-07 09:33:26 [EE]     return _bootstrap._gcd_import(name[level:], package, level)
+2025-12-07 09:33:26 [EE]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+2025-12-07 09:33:26 [EE]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-12-07 09:33:26 [EE]   File "/home/laynie/Gilderhaven/gilderhaven/commands/__init__.py", line 26, in <module>
+2025-12-07 09:33:26 [EE]     from .shop_commands import ShopCmdSet
+2025-12-07 09:33:26 [EE]   File "/home/laynie/Gilderhaven/gilderhaven/commands/shop_commands.py", line 15, in <module>
+2025-12-07 09:33:26 [EE]     from world.shops import (
+2025-12-07 09:33:26 [EE] ModuleNotFoundError: No module named 'world.shops'
+None2025-12-07 09:33:26 [EE] Error loading cmdset 'commands.default_cmdsets.CharacterCmdSet'
+2025-12-07 09:33:26 [EE] (Traceback was logged 25-12-07 09:33:26)
+None2025-12-07 09:33:26 [EE] Error encountered for cmdset at path 'commands.default_cmdsets.CharacterCmdSet'.
+2025-12-07 09:33:26 [EE] Replacing with fallback 'evennia.commands.default.cmdset_character.CharacterCmdSet'.
+2025-12-07 09:34:48 [..] Server disconnected from the portal.
+2025-12-07 09:34:48 [..] Main loop terminated.
+2025-12-07 09:34:48 [..] Server Shut Down.
+2025-12-07 09:34:49 [..] Loaded.
+2025-12-07 09:34:48 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 09:34:49 [..] Loaded.
+2025-12-07 09:34:49 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 09:34:49 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 09:34:49 [..] Webserver starting on 4005
+2025-12-07 09:34:50 [..] Server successfully reloaded.
+2025-12-07 09:35:06 [..] Created market room: Market Square
+2025-12-07 09:35:06 [..] Created market room: Honest Work Tools
+2025-12-07 09:35:06 [..] Created market room: The Bubbling Flask
+2025-12-07 09:35:06 [..] Created market room: The Tipsy Sprite
+2025-12-07 09:35:06 [..] Created market room: Grove Trading Post
+2025-12-07 09:35:06 [..] Set up tools shop on Greta the Toolsmith
+2025-12-07 09:35:06 [..] Created NPC: Greta the Toolsmith in Honest Work Tools
+2025-12-07 09:35:06 [..] Set up potions shop on Whisper the Apothecary
+2025-12-07 09:35:06 [..] Created NPC: Whisper the Apothecary in The Bubbling Flask
+2025-12-07 09:35:06 [..] Set up food shop on Big Tom
+2025-12-07 09:35:06 [..] Created NPC: Big Tom in The Tipsy Sprite
+2025-12-07 09:35:06 [..] Set up materials shop on Sal the Buyer
+2025-12-07 09:35:06 [..] Created NPC: Sal the Buyer in Grove Trading Post
+2025-12-07 09:35:06 [..] Built Market with 5 rooms and 4 NPCs
+2025-12-07 09:43:50 [WW] Warning: Idmapper flush called more than once in 5.0 min interval. Check memory usage.
+2025-12-07 18:35:30 [SS] Authentication Success: Witch(account 1) (IP: 127.0.0.1).
+2025-12-07 18:35:30 [..] Logged out: Witch(account 1) 127.0.0.1 (1 sessions(s) remaining) (Logged in from elsewhere. Disconnecting.)
+2025-12-07 18:35:30 [..] Logged in: Witch(account 1) 127.0.0.1 (1 session(s) total)
+2025-12-07 18:36:05 [..] Server disconnected from the portal.
+2025-12-07 18:36:05 [..] Main loop terminated.
+2025-12-07 18:36:05 [..] Server Shut Down.
+2025-12-07 18:36:06 [..] Loaded.
+2025-12-07 18:36:05 [..] Loading /home/laynie/evennia-env/lib/python3.12/site-packages/evennia/server/server.py...
+2025-12-07 18:36:06 [..] Loaded.
+2025-12-07 18:36:06 [..] twistd 24.11.0 (/home/laynie/evennia-env/bin/python3 3.12.3) starting up.
+2025-12-07 18:36:06 [..] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-12-07 18:36:06 [..] Webserver starting on 4005
+2025-12-07 18:36:06 [..] Server successfully reloaded.
