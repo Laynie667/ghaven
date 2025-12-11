@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auria's Room Preview</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #1a1a1a;
+            color: #c0c0c0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #ff99cc;
+            text-align: center;
+            border-bottom: 2px solid #ff99cc;
+            padding-bottom: 10px;
+        }
+        
+        .time-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #252525;
+            border-radius: 8px;
+        }
+        
+        .time-btn {
+            background: #333;
+            color: #c0c0c0;
+            border: 1px solid #555;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .time-btn:hover {
+            background: #444;
+            border-color: #ff99cc;
+        }
+        
+        .time-btn.active {
+            background: #ff99cc;
+            color: #1a1a1a;
+            border-color: #ff99cc;
+        }
+        
+        .room-display {
+            background: #0d0d0d;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .room-name {
+            color: #00ffff;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .time-desc {
+            color: #ff99ff;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 153, 255, 0.05);
+            border-left: 3px solid #ff99ff;
+        }
+        
+        .room-desc {
+            margin-bottom: 20px;
+        }
+        
+        .room-desc .highlight {
+            color: #ffffff;
+        }
+        
+        .room-desc .special {
+            color: #ffff00;
+        }
+        
+        .fae-ambient {
+            color: #ff00ff;
+            font-style: italic;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255, 0, 255, 0.1);
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .fae-ambient.visible {
+            display: block;
+        }
+        
+        .section-header {
+            color: #888;
+            margin: 25px 0 10px 0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+        
+        .contents-list {
+            color: #aaa;
+        }
+        
+        .contents-list .object-name {
+            color: #88ff88;
+            cursor: pointer;
+        }
+        
+        .contents-list .object-name:hover {
+            text-decoration: underline;
+        }
+        
+        .exits {
+            color: #aaa;
+        }
+        
+        .exits .exit-name {
+            color: #00ffff;
+        }
+        
+        .object-panel {
+            background: #151515;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            display: none;
+        }
+        
+        .object-panel.visible {
+            display: block;
+        }
+        
+        .object-panel h3 {
+            color: #ffffff;
+            margin-top: 0;
+            border-bottom: 1px solid #444;
+            padding-bottom: 8px;
+        }
+        
+        .object-panel .close-btn {
+            float: right;
+            background: #333;
+            border: none;
+            color: #888;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .object-panel .close-btn:hover {
+            background: #444;
+            color: #fff;
+        }
+        
+        .eevee-state {
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(255, 153, 204, 0.1);
+            border-radius: 4px;
+        }
+        
+        .eevee-toggle {
+            margin-top: 10px;
+        }
+        
+        .eevee-toggle button {
+            background: #333;
+            color: #c0c0c0;
+            border: 1px solid #555;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            margin-right: 8px;
+        }
+        
+        .eevee-toggle button:hover {
+            background: #444;
+        }
+        
+        .journal-entries {
+            border: 1px solid #444;
+            padding: 15px;
+            margin-top: 15px;
+            background: #0d0d0d;
+        }
+        
+        .journal-header {
+            text-align: center;
+            color: #ffff00;
+            margin-bottom: 15px;
+        }
+        
+        .journal-entry {
+            margin: 10px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #333;
+        }
+        
+        .journal-entry:last-child {
+            border-bottom: none;
+        }
+        
+        .journal-author {
+            color: #ffff00;
+        }
+        
+        .family-message {
+            color: #ff00ff;
+            font-style: italic;
+            padding: 10px;
+            margin: 15px 0;
+            background: rgba(255, 0, 255, 0.1);
+            border-radius: 4px;
+        }
+        
+        .family-selector {
+            margin: 15px 0;
+        }
+        
+        .family-selector select {
+            background: #333;
+            color: #c0c0c0;
+            border: 1px solid #555;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        .toggle-fae {
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .toggle-fae button {
+            background: #663366;
+            color: #ffccff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        
+        .toggle-fae button:hover {
+            background: #884488;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌸 Auria's Room Preview 🌸</h1>
+        
+        <div class="time-selector">
+            <button class="time-btn" data-time="dawn">Dawn</button>
+            <button class="time-btn active" data-time="morning">Morning</button>
+            <button class="time-btn" data-time="afternoon">Afternoon</button>
+            <button class="time-btn" data-time="dusk">Dusk</button>
+            <button class="time-btn" data-time="evening">Evening</button>
+            <button class="time-btn" data-time="night">Night</button>
+            <button class="time-btn" data-time="midnight">Midnight</button>
+        </div>
+        
+        <div class="family-selector">
+            <label>Viewing as: </label>
+            <select id="family-select">
+                <option value="stranger">Stranger</option>
+                <option value="Helena">Helena</option>
+                <option value="Laynie">Laynie</option>
+                <option value="Shadow">Shadow</option>
+                <option value="Auria">Auria</option>
+            </select>
+        </div>
+        
+        <div class="family-message" id="family-message" style="display: none;"></div>
+        
+        <div class="room-display">
+            <div class="room-name">Auria's Room</div>
+            
+            <div class="time-desc" id="time-desc">
+                Sunlight fills the room with warmth, catching dust motes that dance like tiny faeries. The pink walls glow softly. On the bed, the stuffed animals are arranged in their usual pile, though you could swear the Eevee was facing the other way yesterday.
+            </div>
+            
+            <div class="room-desc">
+                Stepping in from the main room you are confronted by a plush carpet underfoot, bright pink in colour. Scattered across the floor are cushions and pillows of all colours, some gathered into a small <span class="highlight object-name" data-obj="nest">nest</span> against the southern wall. From the wall above the nest hangs a set of <span class="highlight object-name" data-obj="nest">chains</span>, long enough for someone to curl up comfortably in the nest and ending in padded shackles, and a collar inscribed with "<span class="special">Auria</span>".
+                <br><br>
+                A comfy <span class="highlight object-name" data-obj="bed">bed</span> stands opposite the door, made up neatly with a pale purple bedspread. Perched in the center of the bed is a fluffy <span class="highlight object-name" data-obj="eevee">Eevee</span> plushie, with a jumbled pile around her; a plush dragon in shades of purple, a Squirtle and Chikorita small enough to fit in a coat pocket and a happy look raccoon.
+                <br><br>
+                Standing beside the nest of pillows is a large <span class="highlight object-name" data-obj="bookcase">bookcase</span> packed with books, a few of the titles standing out; "The Lion, the Witch and the Wardrobe", "The Painted Man", "The Black Prism", "The Way of Kings". Beside the bookcase is pinned a note; "<span class="highlight">Feel free to add something! Just let me know which is yours!</span>"
+                <br><br>
+                Against the northern wall rests a <span class="highlight object-name" data-obj="trunk">closed trunk</span>, and a small <span class="highlight object-name" data-obj="wardrobe">wardrobe</span> stands against the southern wall. On a small table by the bed, a leather-bound <span class="highlight object-name" data-obj="journal">journal</span> lies open, pen beside it.
+            </div>
+            
+            <div class="fae-ambient" id="fae-ambient"></div>
+            
+            <div class="toggle-fae">
+                <button onclick="triggerFaeAmbient()">✨ Trigger Fae Moment ✨</button>
+            </div>
+            
+            <div class="section-header">Contents:</div>
+            <div class="contents-list">
+                <span class="object-name" data-obj="eevee">Eevee</span>, 
+                <span class="object-name" data-obj="journal">Auria's Journal</span>, 
+                <span class="object-name" data-obj="nest">pillow nest</span>, 
+                <span class="object-name" data-obj="bed">comfy bed</span>, 
+                <span class="object-name" data-obj="bookcase">large bookcase</span>, 
+                <span class="object-name" data-obj="trunk">closed trunk</span>, 
+                <span class="object-name" data-obj="wardrobe">small wardrobe</span>
+            </div>
+            
+            <div class="section-header">Exits:</div>
+            <div class="exits">
+                <span class="exit-name">[Out]</span> - Hallway <em>(you define this)</em>
+            </div>
+        </div>
+        
+        <!-- Object Panels -->
+        <div class="object-panel" id="panel-eevee">
+            <button class="close-btn" onclick="closePanel('eevee')">×</button>
+            <h3>Eevee</h3>
+            <div id="eevee-desc">
+                A plush Eevee sits among the other stuffed animals, brown fur soft and well-loved. Glass eyes catch the light. It's clearly been hugged many times—the fur is worn in places, one ear slightly bent. Auria's favorite.
+            </div>
+            <div class="eevee-state" id="eevee-state"></div>
+            <div class="eevee-toggle">
+                <button onclick="toggleEeveeReveal()">Toggle Reveal State</button>
+                <button onclick="petEevee()">Pet Eevee</button>
+            </div>
+        </div>
+        
+        <div class="object-panel" id="panel-journal">
+            <button class="close-btn" onclick="closePanel('journal')">×</button>
+            <h3>Auria's Journal</h3>
+            <p>A leather-bound journal lies open on the small table, a pen beside it. The pages are filled with different handwriting—messages from family, notes of love and longing. A ribbon marks the current page. The leather is worn from handling.</p>
+            <div class="journal-entries">
+                <div class="journal-header">════════════════════<br>Recent Entries<br>════════════════════</div>
+                <div class="journal-entry">
+                    <span class="journal-author">Helena</span> wrote:<br>
+                    &nbsp;&nbsp;Little one. The garden misses you. I watered the vine in your room. The pack sends their love. Come home when you're ready. We'll be here.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;♥ Mommy
+                </div>
+                <div class="journal-entry">
+                    <span class="journal-author">Laynie</span> wrote:<br>
+                    &nbsp;&nbsp;Hey sis. Borrowed your purple dragon for a bit. Needed cuddles. Put him back, promise. The Eevee judged me the whole time.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;- L
+                </div>
+                <div class="journal-entry">
+                    <span class="journal-author">Shadow</span> wrote:<br>
+                    &nbsp;&nbsp;The garden blooms. The magic holds. Your room is safe. Always.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;- S
+                </div>
+            </div>
+        </div>
+        
+        <div class="object-panel" id="panel-nest">
+            <button class="close-btn" onclick="closePanel('nest')">×</button>
+            <h3>pillow nest</h3>
+            <p>Cushions and pillows of all colours gathered into a nest against the southern wall. From the wall above hangs a set of chains, long enough for someone to curl up comfortably in the nest and ending in padded shackles, and a collar inscribed with 'Auria'.</p>
+            <p><em>The chains hang empty, waiting.</em></p>
+        </div>
+        
+        <div class="object-panel" id="panel-bed">
+            <button class="close-btn" onclick="closePanel('bed')">×</button>
+            <h3>comfy bed</h3>
+            <p>A comfy bed made up neatly with a pale purple bedspread. Perched in the center is a fluffy Eevee plushie, with a jumbled pile around her; a plush dragon in shades of purple, a Squirtle and Chikorita small enough to fit in a coat pocket and a happy look raccoon. The sheets smell clean. Someone maintains this.</p>
+        </div>
+        
+        <div class="object-panel" id="panel-bookcase">
+            <button class="close-btn" onclick="closePanel('bookcase')">×</button>
+            <h3>large bookcase</h3>
+            <p>A large bookcase packed with books, standing beside the pillow nest. A few titles stand out: 'The Lion, the Witch and the Wardrobe', 'The Painted Man', 'The Black Prism', 'The Way of Kings'. Beside the bookcase is pinned a note:</p>
+            <p style="text-align: center; color: #ffffff;">'Feel free to add something! Just let me know which is yours!'</p>
+            <p><strong>Her favorites:</strong></p>
+            <ul style="margin-left: 20px; color: #aaa;">
+                <li>'The Lion, the Witch and the Wardrobe'</li>
+                <li>'The Painted Man'</li>
+                <li>'The Black Prism'</li>
+                <li>'The Way of Kings'</li>
+            </ul>
+            <p><em>Players can create actual books with pages, write in them, and shelve them here for Auria to find.</em></p>
+            <p><strong>Book commands:</strong> newbook &lt;title&gt;, write &lt;text&gt;, addpage, read, turn, title &lt;name&gt;, finish, shelve &lt;book&gt;</p>
+        </div>
+        
+        <div class="object-panel" id="panel-trunk">
+            <button class="close-btn" onclick="closePanel('trunk')">×</button>
+            <h3>closed trunk</h3>
+            <p>A closed trunk rests against the northern wall, dark wood with brass fittings. Something about it suggests you shouldn't try to open it without permission.</p>
+        </div>
+        
+        <div class="object-panel" id="panel-wardrobe">
+            <button class="close-btn" onclick="closePanel('wardrobe')">×</button>
+            <h3>small wardrobe</h3>
+            <p>A small wardrobe stands against the southern wall. Peeking inside you can see colorful fabrics—dresses, soft things. Nothing practical. Everything pretty.</p>
+        </div>
+    </div>
+    
+    <script>
+        const timeDescs = {
+            dawn: "Pale light filters through curtains she picked herself, pink and gauzy. The room stirs—not physically, but as if waking. The Eevee on the bed catches the first light, and for a moment its glass eyes almost seem to blink.",
+            morning: "Sunlight fills the room with warmth, catching dust motes that dance like tiny faeries. The pink walls glow softly. On the bed, the stuffed animals are arranged in their usual pile, though you could swear the Eevee was facing the other way yesterday.",
+            afternoon: "The room drowses in afternoon light. Shadows gather in friendly corners. The pillow nest looks inviting, the chains above it catching occasional glints of sun. Everything waits, patient and pink and warm.",
+            dusk: "Golden light paints everything amber and rose. The room feels fuller somehow, as if preparing for something. The Eevee's shadow stretches long across the bedspread. There are no flowers in the room, yet you smell flowers.",
+            evening: "Firefly lights drift near the ceiling, fading in and out. They're not fireflies—there's no source for them, no explanation. The room is warm despite no fire. The stuffies watch the door.",
+            night: "The room glows faintly, softly, from no source you can find. Moonlight through the curtains, perhaps, but the glow comes from everywhere and nowhere. The Eevee's eyes catch light that isn't there.",
+            midnight: "Stars. There are stars on the ceiling. You don't remember them being there before. The room breathes—slow, patient, waiting. The chains above the nest sway gently in air that doesn't move."
+        };
+        
+        const faeAmbient = [
+            "A giggle echoes from nowhere. Or maybe you imagined it.",
+            "The flowers on her drawings seem brighter than they were a moment ago.",
+            "You catch movement in your peripheral vision. Nothing's there.",
+            "For just a moment, the room smells like a forest after rain.",
+            "The Eevee on the bed seems to be in a slightly different position.",
+            "A warm breeze touches your cheek. The window is closed.",
+            "One of the crayon suns on the wall flickers. Like actual sunlight.",
+            "You hear humming—soft, wordless, gone before you can locate it.",
+            "The shadows in the corner are deeper than the lighting explains.",
+            "Something brushes past your ankle. Nothing visible.",
+            "The air tastes faintly of honey and something you can't name.",
+            "Dust motes swirl in a pattern too deliberate to be random."
+        ];
+        
+        const familyMessages = {
+            Helena: [
+                "The room seems to brighten when you enter. It knows its Mommy.",
+                "Warmth wraps around you like a hug. She left that here for you.",
+                "The Eevee's head turns—just slightly—toward you."
+            ],
+            Laynie: [
+                "The room relaxes around you. Sister-energy, familiar and safe.",
+                "You smell her perfume for just a moment. The one she let you borrow.",
+                "The stuffies seem to lean toward you. They remember."
+            ],
+            Shadow: [
+                "The room's magic pulses in recognition. Pack. Family. Home.",
+                "Every fae-touched corner seems to hum a greeting."
+            ],
+            Auria: [
+                "Home. The word fills every corner, every color, every mote of light.",
+                "Everything here has been waiting. Everything here is yours.",
+                "The room exhales. Finally. Finally you're back."
+            ]
+        };
+        
+        let eeveeRevealed = false;
+        let currentFamily = 'stranger';
+        
+        // Time selector
+        document.querySelectorAll('.time-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById('time-desc').textContent = timeDescs[btn.dataset.time];
+            });
+        });
+        
+        // Object click handlers
+        document.querySelectorAll('.object-name').forEach(el => {
+            el.addEventListener('click', () => {
+                const obj = el.dataset.obj;
+                document.querySelectorAll('.object-panel').forEach(p => p.classList.remove('visible'));
+                document.getElementById('panel-' + obj).classList.add('visible');
+                updateEeveeDisplay();
+            });
+        });
+        
+        function closePanel(obj) {
+            document.getElementById('panel-' + obj).classList.remove('visible');
+        }
+        
+        function triggerFaeAmbient() {
+            const ambient = faeAmbient[Math.floor(Math.random() * faeAmbient.length)];
+            const el = document.getElementById('fae-ambient');
+            el.textContent = ambient;
+            el.classList.add('visible');
+            setTimeout(() => el.classList.remove('visible'), 5000);
+        }
+        
+        function toggleEeveeReveal() {
+            eeveeRevealed = !eeveeRevealed;
+            updateEeveeDisplay();
+        }
+        
+        function updateEeveeDisplay() {
+            const descEl = document.getElementById('eevee-desc');
+            const stateEl = document.getElementById('eevee-state');
+            
+            if (eeveeRevealed || ['Helena', 'Laynie', 'Shadow', 'Auria'].includes(currentFamily)) {
+                descEl.innerHTML = "The Eevee watches you with warm, living eyes—definitely not glass. Her fur rises and falls with breath. Her tail curls and uncurls lazily. She's small, soft, warm, and very much alive. How long has she been like this? Has she always been?";
+                stateEl.innerHTML = "<strong>State:</strong> Revealed, alive, watching with knowing eyes";
+            } else {
+                descEl.innerHTML = "A plush Eevee sits among the other stuffed animals, brown fur soft and well-loved. Glass eyes catch the light. It's clearly been hugged many times—the fur is worn in places, one ear slightly bent. Auria's favorite.";
+                stateEl.innerHTML = "<strong>State:</strong> Disguised as stuffed animal";
+            }
+        }
+        
+        function petEevee() {
+            const stateEl = document.getElementById('eevee-state');
+            if (eeveeRevealed || ['Helena', 'Laynie', 'Shadow', 'Auria'].includes(currentFamily)) {
+                const responses = [
+                    "The Eevee leans into your touch, making a sound of pure contentment.",
+                    "She chirps happily, tail wagging as you pet her.",
+                    "Her eyes half-close in pleasure. Soft. So soft.",
+                    "She nuzzles your hand, warm and affectionate."
+                ];
+                stateEl.innerHTML = responses[Math.floor(Math.random() * responses.length)];
+            } else if (Math.random() < 0.4) {
+                eeveeRevealed = true;
+                updateEeveeDisplay();
+                stateEl.innerHTML = "The stuffed Eevee... moves. Stretches. Blinks. Looks at you with eyes that are definitely not glass. She tilts her head, studying you, then makes a soft curious sound. Not a toy. Not a toy at all.";
+            } else {
+                stateEl.innerHTML = "You pet the stuffed Eevee. The fur is incredibly soft—softer than any plush should be. Warm, too. Almost like...<br><br>No. It's just a stuffed animal.";
+            }
+        }
+        
+        // Family selector
+        document.getElementById('family-select').addEventListener('change', (e) => {
+            currentFamily = e.target.value;
+            const msgEl = document.getElementById('family-message');
+            
+            if (familyMessages[currentFamily]) {
+                const msgs = familyMessages[currentFamily];
+                msgEl.textContent = msgs[Math.floor(Math.random() * msgs.length)];
+                msgEl.style.display = 'block';
+                
+                // Auto-reveal eevee for family
+                eeveeRevealed = true;
+                updateEeveeDisplay();
+            } else {
+                msgEl.style.display = 'none';
+                eeveeRevealed = false;
+                updateEeveeDisplay();
+            }
+        });
+    </script>
+</body>
+</html>
